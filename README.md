@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<h1>Production-Grade OTP & Identity Verification System</h1></br>
+
+
+<div>
+   Recently, I built a secure OTP system for registration & password reset, and then extended it into a reusable identity verification service.
 </div>
 
-# Run and deploy your AI Studio app
+<div>
+  <b>
+     Tech Stack: Spring Boot 
+  </b> 
+   <ul>
+      <li> Redis</li>
+      <li> Email & SMS OTP</li>
+   </ul>
 
-This contains everything you need to run your app locally.
+What I implemented & learned:
 
-View your app in AI Studio: https://ai.studio/apps/drive/17b3LpaPEVA1Jxtjkv8EBIkCl_2U13_9O
+ ✓ OTP for Email & Mobile (Redis + TTL)
 
-## Run Locally
+ ✓ Multiple purposes: Registration, Password Reset, Login 2FA
 
-**Prerequisites:**  Node.js
+ ✓ OTP hashing (no plain OTP stored)
+
+ ✓ Attempt tracking & temporary blocking
+
+ ✓ Resend & rate-limiting logic
+
+ ✓ Token-based, stateless verification
+
+ ✓ Audit logs for traceability
+
+High-level flow:
+
+ Request OTP → Store hashed OTP in Redis (TTL) → Send via Email/SMS → Verify → Clean up
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+One of the most exciting parts was integrating real SMS delivery to mobile numbers, handling retries, rate limits, and failure scenarios — it made the system feel truly production-ready.
+</div>
+
+
+
